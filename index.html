@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tap Bloom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="game-card" aria-labelledby="game-title">
+      <div class="eyebrow">A tiny daily ritual</div>
+      <h1 id="game-title">Tap Bloom</h1>
+      <p class="subtitle">Turn one small click into a garden of points.</p>
+
+      <div class="score-panel" aria-live="polite">
+        <span class="score-label">Your bloom</span>
+        <strong id="score">0</strong>
+        <span class="score-label">clicks</span>
+      </div>
+
+      <button class="bloom-button" id="bloomButton" type="button" aria-label="Add one click">
+        <span class="bloom-core">+</span>
+        <span class="button-caption">Tap to grow</span>
+      </button>
+
+      <div class="actions">
+        <span id="streakMessage">Every garden starts with one.</span>
+        <button class="reset-button" id="resetButton" type="button">Reset</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

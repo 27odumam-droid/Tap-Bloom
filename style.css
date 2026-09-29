@@ -1,0 +1,150 @@
+:root {
+  color: #25352d;
+  background: #e8f0e5;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at 15% 12%, #f7d7ae 0 10%, transparent 28%), linear-gradient(135deg, #f7f3e9 0%, #dcebdd 100%);
+}
+
+.game-shell {
+  display: grid;
+  min-height: 100vh;
+  padding: 28px;
+  place-items: center;
+}
+
+.game-card {
+  width: min(100%, 460px);
+  padding: clamp(30px, 8vw, 64px) clamp(24px, 7vw, 58px) 34px;
+  border: 1px solid rgba(37, 53, 45, 0.14);
+  border-radius: 28px;
+  background: rgba(255, 253, 246, 0.84);
+  box-shadow: 0 24px 70px rgba(57, 78, 57, 0.16);
+  text-align: center;
+  animation: rise-in 650ms ease-out both;
+}
+
+.eyebrow {
+  color: #b66c3d;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 10px 0 4px;
+  color: #25352d;
+  font-family: Georgia, serif;
+  font-size: clamp(2.9rem, 13vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.subtitle {
+  max-width: 280px;
+  margin: 16px auto 30px;
+  color: #65766a;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.score-panel {
+  display: grid;
+  gap: 3px;
+  margin-bottom: 28px;
+}
+
+.score-label {
+  color: #839084;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+#score {
+  color: #b66c3d;
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.bloom-button {
+  position: relative;
+  display: grid;
+  width: min(100%, 242px);
+  aspect-ratio: 1;
+  margin: 0 auto 26px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #fffdf6;
+  background: #4f8768;
+  box-shadow: 0 0 0 12px rgba(79, 135, 104, 0.12), 0 18px 0 #38694f, 0 28px 34px rgba(54, 91, 65, 0.24);
+  cursor: pointer;
+  transition: transform 130ms ease, box-shadow 130ms ease, background 130ms ease;
+}
+
+.bloom-button:hover { background: #5e9675; transform: translateY(-3px); }
+.bloom-button:active { transform: translateY(9px); box-shadow: 0 0 0 12px rgba(79, 135, 104, 0.12), 0 7px 0 #38694f, 0 17px 24px rgba(54, 91, 65, 0.18); }
+.bloom-button:focus-visible, .reset-button:focus-visible { outline: 4px solid #e2a56e; outline-offset: 5px; }
+
+.bloom-core {
+  margin-top: -8px;
+  font-size: 6rem;
+  font-weight: 400;
+  line-height: 0.7;
+}
+
+.button-caption {
+  position: absolute;
+  bottom: 41px;
+  font-size: 0.77rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: #839084;
+  font-size: 0.78rem;
+  text-align: left;
+}
+
+#streakMessage { line-height: 1.35; }
+
+.reset-button {
+  flex: 0 0 auto;
+  padding: 8px 13px;
+  border: 1px solid rgba(37, 53, 45, 0.2);
+  border-radius: 999px;
+  color: #53655a;
+  background: transparent;
+  cursor: pointer;
+}
+
+.reset-button:hover { background: #eef3ea; }
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 420px) {
+  .game-shell { padding: 14px; }
+  .game-card { border-radius: 22px; }
+  .actions { align-items: flex-start; }
+}
