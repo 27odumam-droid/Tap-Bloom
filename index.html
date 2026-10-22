@@ -3,31 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tap Bloom</title>
+  <meta name="theme-color" content="#e8f0e5">
+  <title>Weather Everywhere</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="game-shell">
-    <section class="game-card" aria-labelledby="game-title">
-      <div class="eyebrow">A tiny daily ritual</div>
-      <h1 id="game-title">Tap Bloom</h1>
-      <p class="subtitle">Turn one small click into a garden of points.</p>
+  <main class="app-shell">
+    <section class="weather-card" aria-labelledby="page-title">
+      <p class="eyebrow">Forecasts around the world</p>
+      <h1 id="page-title">Weather Everywhere</h1>
+      <p class="intro">Search for a place anywhere or enter coordinates to see its forecast.</p>
 
-      <div class="score-panel" aria-live="polite">
-        <span class="score-label">Your bloom</span>
-        <strong id="score">0</strong>
-        <span class="score-label">clicks</span>
-      </div>
+      <form id="searchForm" class="search-form">
+        <label for="placeSearch">Search for a city or place</label>
+        <div class="search-controls">
+          <input id="placeSearch" name="placeSearch" type="search" placeholder="e.g. Tokyo, Japan" autocomplete="off" required>
+          <button id="searchButton" type="submit">Search places</button>
+        </div>
+        <p id="searchMessage" class="search-message" aria-live="polite"></p>
+        <ul id="searchResults" class="search-results" aria-label="Matching places" hidden></ul>
+      </form>
 
-      <button class="bloom-button" id="bloomButton" type="button" aria-label="Add one click">
-        <span class="bloom-core">+</span>
-        <span class="button-caption">Tap to grow</span>
-      </button>
+      <section class="saved-section" aria-labelledby="saved-title">
+        <h2 id="saved-title">Saved places</h2>
+        <p id="savedMessage" class="saved-message">Save places you check often for quick access.</p>
+        <ul id="savedLocations" class="saved-locations" aria-label="Saved places"></ul>
+      </section>
 
-      <div class="actions">
-        <span id="streakMessage">Every garden starts with one.</span>
-        <button class="reset-button" id="resetButton" type="button">Reset</button>
-      </div>
+      <form id="locationForm" class="location-form">
+        <h2>Or use coordinates</h2>
+        <div class="coordinate-fields">
+          <label for="latitude">Latitude</label>
+          <input id="latitude" name="latitude" type="number" step="any" min="-90" max="90" value="39.7456" required>
+
+          <label for="longitude">Longitude</label>
+          <input id="longitude" name="longitude" type="number" step="any" min="-180" max="180" value="-97.0892" required>
+        </div>
+        <button id="lookupButton" type="submit">Get forecast</button>
+      </form>
+
+      <p class="api-note">U.S. forecasts use the National Weather Service. Other locations use Open-Meteo. This static page cannot set a custom User-Agent header.</p>
+
+      <section id="result" class="result-panel" aria-labelledby="result-title" aria-live="polite">
+        <h2 id="result-title">Local forecast</h2>
+        <p id="statusMessage" class="status-message">Search for a place or submit coordinates to get a forecast.</p>
+        <div id="forecastContent" class="forecast-content" hidden>
+          <h3 id="forecastLocation" class="forecast-location"></h3>
+          <p id="providerLabel" class="provider-label"></p>
+          <section id="alertsSection" class="alerts-section" aria-labelledby="alerts-title" hidden>
+            <h4 id="alerts-title">Weather alerts</h4>
+            <p id="alertsMessage" class="alerts-message"></p>
+            <ul id="alertsList" class="alerts-list"></ul>
+          </section>
+          <ol id="forecastPeriods" class="forecast-periods" aria-label="Forecast periods"></ol>
+          <div class="share-controls">
+            <button id="shareButton" class="share-button" type="button">Share forecast</button>
+            <p id="shareMessage" class="share-message" aria-live="polite"></p>
+            <label id="shareLinkLabel" for="shareLink" hidden>Copy this forecast link</label>
+            <input id="shareLink" class="share-link" type="url" readonly hidden>
+          </div>
+          <a id="forecastLink" class="forecast-link" target="_blank" rel="noopener noreferrer" hidden></a>
+          <p id="forecastAttribution" class="forecast-attribution"></p>
+          <form id="saveLocationForm" class="save-location-form">
+            <label for="savedLocationName">Save this place</label>
+            <div class="save-controls">
+              <input id="savedLocationName" name="savedLocationName" type="text" maxlength="60" placeholder="Name (e.g. Home)" required>
+              <button type="submit">Save place</button>
+            </div>
+            <p id="saveMessage" class="save-message" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
     </section>
   </main>
   <script src="script.js"></script>
